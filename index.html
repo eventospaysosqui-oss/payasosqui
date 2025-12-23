@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payasosqui | Eventos y Contrataciones</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
+      background-image: url("fondo.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.08);
+    }
+
+    /* ===== ANIMACIONES BOTONES ===== */
+
+    /* Botón Contratar Ahora */
+    .btn-contratar {
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Botón WhatsApp */
+    .btn-whatsapp {
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    footer {
+      background: rgba(0,0,0,0.8);
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    /* ===== CALENDARIO ===== */
+    #monthYear {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    #calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .day {
+      padding: 15px;
+      border-radius: 10px;
+      background: rgb(15, 176, 4);
+      cursor: pointer;
+      user-select: none;
+      color: #e2e2e2;
+      font-weight: bold;
+    }
+
+    .occupied {
+      background: #b52b27;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+<div class="overlay">
+
+<header>
+  <h1>🤡 Payasosqui 🤡</h1>
+  <p>Eventos infantiles, fiestas privadas y diversión garantizada</p>
+  <a href="#contacto" class="btn btn-contratar">Contratar Ahora</a>
+</header>
+
+<section>
+  <h2>🎉 Servicios para Eventos</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Fiestas Infantiles</h3>
+      <p>Shows llenos de risas, juegos y animación.</p>
+    </div>
+    <div class="card">
+      <h3>Cumpleaños</h3>
+      <p>Animación personalizada para cumpleaños.</p>
+    </div>
+    <div class="card">
+      <h3>Eventos Especiales</h3>
+      <p>Escuelas, ferias y eventos familiares.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>📅 Disponibilidad</h2>
+  <div id="monthYear"></div>
+  <div id="calendar"></div>
+</section>
+
+<section id="contacto">
+  <h2>📞 Contacto y Contrataciones</h2>
+
+  <div style="text-align:center;">
+    <p><strong>📞 Teléfono / WhatsApp:</strong> +1 720 668 5818</p>
+    <p><strong>📧 Correo:</strong> hendrixcamacho41@gmail.com</p>
+
+    <div style="margin-top:30px;">
+      <a
+        href="https://wa.me/17206685818?text=Hola%20quiero%20información%20para%20contratar%20un%20show%20de%20payasos%20🤡🎉"
+        target="_blank"
+        class="btn btn-whatsapp"
+      >
+        📲 Enviar Solicitud por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Payasosqui</p>
+  <p>Contacto directo por WhatsApp</p>
+</footer>
+
+</div>
+
+<script>
+  const today = new Date();
+  const monthNames = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+  document.getElementById("monthYear").textContent = `${monthNames[today.getMonth()]} ${today.getFullYear()}`;
+
+  const calendar = document.getElementById("calendar");
+  for (let i = 1; i <= 30; i++) {
+    const day = document.createElement("div");
+    day.className = "day";
+    day.textContent = i;
+    calendar.appendChild(day);
+  }
+</script>
+
+</body>
+</html>
